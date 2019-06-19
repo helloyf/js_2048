@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<table>
+        		<thead>
+          			<tr>
+              			<th data-field="id">username</th>
+              			<th data-field="name">grade</th>
+          			</tr>
+        		</thead>
+
+        		<tbody>
+          			<tr v-for="item in list">
+            			<td>{{item.username}}</td>
+            			<td>{{item.grade}}</td>
+          			</tr>
+        		</tbody>
+      		</table>
+      	</div>
+	</body>
+	<script src="http://unpkg.com/vue/dist/vue.min.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				list:[]
+			},
+			mounted(){
+				var _this = this;
+				axios.post("http://localhost:3001/battle",{
+					})
+					.then(function (res) {
+    					_this.list=res.data;
+    					console.log(res.data)
+  					});
+			}
+		})
+	</script>
+</html>
